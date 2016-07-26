@@ -16,7 +16,7 @@ name = ARGV.first
   .downcase
   .gsub /[^0-9a-z ]/i, '-'
 
-filename = "./output/#{name}_#{Time.now.to_i}.pdf"
+filename = "./output/#{name}_#{Time.now.to_i}"
 
 document_options = {
   width: 5.83.in,
@@ -31,7 +31,7 @@ document_options = {
 
 margins = document_options[:margins]
 
-Prawn::Document.generate(filename, {
+Prawn::Document.generate("#{filename}.pdf", {
   page_size: [document_options[:width], document_options[:height]],
   margin: [margins[:top], margins[:outer], margins[:bottom], margins[:inner]]
 }) do |pdf|
@@ -64,13 +64,15 @@ Prawn::Document.generate(filename, {
   output.gsub!(/(\w+)/) { |word| shuffle word }
 
   # Books
-  output.gsub!(/^([\w#{Prawn::Text::SHY}]+)$\n\n-----/) { |book| "<font name='sans' size='11'>#{book}</font>" }
+  output.gsub!(/^(.+)$\n-----/) { |book| "<font name='sans' size='11'>#{$1}</font>\n-----" }
 
   # Chapter headings
   output.gsub!(/(^C[\w#{Prawn::Text::SHY}]+\s\d+$)/) { |n| "<font name='sans'>#{n}</font>" }
 
   # Verse numbers
   output.gsub!(/(^\d+)\s/) { |n| "<font name='sans' size='6'>#{n}</font>" }
+
+  File.write "#{filename}_manuscript.txt", output
 
   print 'Building PDF...'
 
