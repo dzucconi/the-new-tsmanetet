@@ -107,7 +107,7 @@ module Parser
     rev: "Revelation"
   }
 
-  BREAK = "\n\n-----\n"
+  BREAK = "\n-----"
   INDENT = Prawn::Text::NBSP * 2
 
   class << self
