@@ -16,8 +16,8 @@ name = ARGV.first
 filename = "./output/#{name}_#{Time.now.to_i}"
 
 document_options = {
-  width: 5.83.in,
-  height: 8.26.in,
+  width: 5.833.in,
+  height: 8.264.in,
   margins: {
     top: 0.5.in,
     outer: 0.5.in,
