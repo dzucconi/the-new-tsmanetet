@@ -23,3 +23,7 @@ def shuffle word
     shuffled
   end
 end
+
+def shuffle_all string
+  string.gsub(/(\w+)/) { |word| shuffle word }
+end
