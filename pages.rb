@@ -5,10 +5,7 @@ require 'prawn/measurement_extensions'
 require 'text/hyphen'
 require_relative './document'
 require_relative './shuffle'
-
-def print(x, b = true)
-  STDOUT.write "#{b ? "\n" : ''}#{x}#{b ? "\n" : ''}"
-end
+require_relative './print'
 
 name = ARGV.first
   .split('/')
