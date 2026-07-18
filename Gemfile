@@ -1,4 +1,4 @@
-ruby '2.3.0'
+ruby '4.0.6'
 source 'https://rubygems.org'
 
 gem 'prawn'
